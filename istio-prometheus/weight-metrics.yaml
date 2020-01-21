@@ -1,0 +1,44 @@
+# Configuration for metric instances
+apiVersion: config.istio.io/v1alpha2
+kind: instance
+metadata:
+  name: weight
+  namespace: istio-system
+spec:
+  compiledTemplate: metric
+  params:
+    value: "1" # count each request twice
+    dimensions:
+      service: destination.service.name | "unknown"
+      destination: destination.workload.name
+      message: '"for weight"'
+    monitored_resource_type: '"UNSPECIFIED"'
+---
+# Configuration for a Prometheus handler
+apiVersion: config.istio.io/v1alpha2
+kind: handler
+metadata:
+  name: weighthandler
+  namespace: istio-system
+spec:
+  compiledAdapter: prometheus
+  params:
+    metrics:
+    - name: service_workload_weight # Prometheus metric name
+      instance_name: weight.instance.istio-system # Mixer instance name (fully-qualified)
+      kind: COUNTER
+      label_names:
+      - service
+      - destination
+      - message
+---
+# Rule to send metric instances to a Prometheus handler
+apiVersion: config.istio.io/v1alpha2
+kind: rule
+metadata:
+  name: weightprom
+  namespace: istio-system
+spec:
+  actions:
+  - handler: weighthandler
+    instances: [ weight ]

@@ -1,0 +1,46 @@
+# Configuration for metric instances
+apiVersion: config.istio.io/v1alpha2
+kind: instance
+metadata:
+  name: interconnection
+  namespace: istio-system
+spec:
+  compiledTemplate: metric
+  params:
+    value: "1" # count each request twice
+    dimensions:
+      source: source.workload.name | "unknown"
+      destination: destination.workload.name | "unknown"
+      context: context.protocol | "unknown"
+      message: '"Interconnection between micrioservices"'
+    monitored_resource_type: '"UNSPECIFIED"'
+---
+# Configuration for a Prometheus handler
+apiVersion: config.istio.io/v1alpha2
+kind: handler
+metadata:
+  name: interconnectionhandler
+  namespace: istio-system
+spec:
+  compiledAdapter: prometheus
+  params:
+    metrics:
+    - name: interconnection_between_microservices # Prometheus metric name
+      instance_name: interconnection.instance.istio-system # Mixer instance name (fully-qualified)
+      kind: COUNTER
+      label_names:
+      - source
+      - destination
+      - context
+      - message
+---
+# Rule to send metric instances to a Prometheus handler
+apiVersion: config.istio.io/v1alpha2
+kind: rule
+metadata:
+  name: prom
+  namespace: istio-system
+spec:
+  actions:
+  - handler: interconnectionhandler
+    instances: [ interconnection ]
