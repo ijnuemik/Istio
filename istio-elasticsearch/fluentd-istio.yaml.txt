@@ -1,45 +1,74 @@
-# Configuration for logentry instances
+# Configuration for tcp access logentry instances
 apiVersion: config.istio.io/v1alpha2
 kind: instance
 metadata:
-  name: newlog
+  name: tcpaccesslog
   namespace: istio-system
 spec:
   compiledTemplate: logentry
   params:
-    severity: '"info"'
-    timestamp: request.time
+    severity: '"warning"'
+    timestamp: context.time
     variables:
-      source: source.labels["app"] | source.workload.name | "unknown"
-      user: source.user | "unknown"
-      destination: destination.labels["app"] | destination.workload.name | "unknown"
-      responseCode: response.code | 0
-      responseSize: response.size | 0
+      source: source.name | "unknown"
+      srcnamespace: source.namespace | "unknown"
+      destination: destination.name | "unknown"
+      desnamespace: destination.namespace | "unknown"
       latency: response.duration | "0ms"
-      traceid: request.headers["x-b3-traceid"] | "unknown" 
     monitored_resource_type: '"UNSPECIFIED"'
 ---
-# Configuration for a Fluentd handler
+# Configuration for access logentry instances
+apiVersion: config.istio.io/v1alpha2
+kind: instance
+metadata:
+  name: accesslog
+  namespace: istio-system
+spec:
+  compiledTemplate: logentry
+  params:
+    severity: '"warning"'
+    timestamp: request.time
+    variables:
+      source: source.name | "unknown"
+      srcnamespace: source.namespace | "unknown"
+      destination: destination.name | "unknown"
+      latency: response.duration | "0ms"
+    monitored_resource_type: '"UNSPECIFIED"'
+---
+# Configuration for a stdio handler
 apiVersion: config.istio.io/v1alpha2
 kind: handler
 metadata:
-  name: handler
+  name: loghandler
   namespace: istio-system
 spec:
   compiledAdapter: fluentd
   params:
     address: "fluentd-es.logging:24224"
 ---
-# Rule to send logentry instances to the Fluentd handler
+# Rule to send tcp access logentry instances to a stdio handler
 apiVersion: config.istio.io/v1alpha2
 kind: rule
 metadata:
-  name: newlogtofluentd
+  name: tcpstdio
   namespace: istio-system
 spec:
   match: "true" # match for all requests
   actions:
-   - handler: handler
+   - handler: loghandler
      instances:
-     - newlog
+     - tcpaccesslog
+---
+# Rule to send tcp access logentry instances to a stdio handler
+apiVersion: config.istio.io/v1alpha2
+kind: rule
+metadata:
+  name: stdio
+  namespace: istio-system
+spec:
+  match: "true" # match for all requests
+  actions:
+   - handler: loghandler
+     instances:
+     - accesslog
 ---
