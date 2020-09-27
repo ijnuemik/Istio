@@ -19,7 +19,7 @@ In order to ensure that various cloud-native applications operate without confli
 The environment allows developers to monitor the traffic behavior of applications with little effort.
 This provides spatial and temporal visibility, so they can effectively utilize environment in all AI+X applications that link AI with IoT or something else.
 
-이 환경은 개발자들이 응용 프로그램의 트래픽 동작을 적은 노력으로 감시할 수 있게 한다.
+이 환경은 개발자들이 응용 프로그램의 트래픽 동작을 적은 노력으로 감시할 수 있게 합니다.
 공간적, 시간적 가시성을 제공해 AI와 IoT 등을 연결하는 모든 AI+X 애플리케이션에서 효과적으로 환경을 활용할 수 있다.
 
 ## How to use?
