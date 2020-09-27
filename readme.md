@@ -26,6 +26,4 @@ This provides spatial and temporal visibility, so they can effectively utilize e
 공간적, 시간적 가시성을 제공해 AI와 IoT 등을 연결하는 모든 AI+X 애플리케이션에서 효과적으로 환경을 활용할 수 있다.
 
 ## How to use?
-Refer to the Implementation Guide
-Implemenatation Guide를 참고하세요.
 - [Implemenatation Guide](https://github.com/ijnuemik/Visualization-employing-Service-mesh/blob/master/Implementation%20Guide.pdf)
