@@ -9,7 +9,7 @@ In order to ensure that various cloud-native applications operate without confli
 분산형 클라우드 인프라 환경에서 다양한 클라우드 네이티브 애플리케이션이 충돌 없이 작동하도록 하기 위해서는 마이크로 서비스에서 상호작용을 식별하는 가시성이 필요합니다.
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/43838237/94359789-16344580-00e4-11eb-8a2f-0d8847a36d71.png" width="700" height="400">
+<img src="https://user-images.githubusercontent.com/43838237/94359789-16344580-00e4-11eb-8a2f-0d8847a36d71.png" width="700" height="300">
 <img src="https://user-images.githubusercontent.com/43838237/94359908-c904a380-00e4-11eb-967f-1012c7e697d8.png" width="700" height="400">
 
 ## Tech/framework used
