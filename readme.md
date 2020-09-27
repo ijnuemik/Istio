@@ -10,6 +10,7 @@ In order to ensure that various cloud-native applications operate without confli
 
 ## Screenshots
 <img src="https://user-images.githubusercontent.com/43838237/94359789-16344580-00e4-11eb-8a2f-0d8847a36d71.png" width="700" height="300">
+<img src="https://user-images.githubusercontent.com/43838237/94359908-c904a380-00e4-11eb-967f-1012c7e697d8.png" width="700" height="300">
 
 ## Tech/framework used
 - [Istio](https://istio.io/)
