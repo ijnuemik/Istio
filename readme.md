@@ -28,4 +28,4 @@ This provides spatial and temporal visibility, so they can effectively utilize e
 ## How to use?
 Refer to the Implementation Guide
 Implemenatation Guide를 참고하세요.
-- [Implemenatation Guide)(https://github.com/ijnuemik/Visualization-employing-Service-mesh/blob/master/Implementation%20Guide.pdf)
+- [Implemenatation Guide](https://github.com/ijnuemik/Visualization-employing-Service-mesh/blob/master/Implementation%20Guide.pdf)
