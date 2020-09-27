@@ -26,6 +26,6 @@ This provides spatial and temporal visibility, so they can effectively utilize e
 - [Implemenatation guide](https://github.com/ijnuemik/Visualization-employing-Service-mesh/blob/master/Implementation%20Guide.pdf)
 
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/43838237/94359789-16344580-00e4-11eb-8a2f-0d8847a36d71.png" width="500" height="250">
-<img src="https://user-images.githubusercontent.com/43838237/94359908-c904a380-00e4-11eb-967f-1012c7e697d8.png" width="500" height="300">
+<img src="https://user-images.githubusercontent.com/43838237/94359789-16344580-00e4-11eb-8a2f-0d8847a36d71.png" width="400" height="250">
+<img src="https://user-images.githubusercontent.com/43838237/94359908-c904a380-00e4-11eb-967f-1012c7e697d8.png" width="400" height="300">
 
